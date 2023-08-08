@@ -334,23 +334,23 @@ export default class TextMarquee extends PureComponent {
         display={animating ? 'flex' : 'none'}
         onContentSizeChange={() => this.calculateMetrics()}
       >
-        <Animated.Text
+        <Animated.View
           ref={c => (this.textRef = c)}
           numberOfLines={1}
           {... props}
           style={[style, { transform: [{ translateX: this.animatedValue }], width: null }]}
         >
           {this.props.children}
-        </Animated.Text>
+        </Animated.View>
         {!contentFits && !isScrolling
           ? <View style={{ paddingLeft: repeatSpacer }}>
-            <Animated.Text
+            <Animated.View
               numberOfLines={1}
               {... props}
               style={[style, { transform: [{ translateX: this.animatedValue }], width: null }]}
             >
               {this.props.children}
-            </Animated.Text>
+            </Animated.View>
           </View> : null }
       </ScrollView>
     );
